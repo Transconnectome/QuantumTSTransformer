@@ -61,11 +61,6 @@ def load_fmri_data(dataset, parcel_type, phenotypes_to_include, target_phenotype
     continuous_features = [col for col in phenotypes_to_include if col not in categorical_features]
     continuous_features.append(target_phenotype)
     
-    # Normalize continuous features
-    phenotypes[continuous_features] = (
-        phenotypes[continuous_features] - phenotypes[continuous_features].mean()
-    ) / phenotypes[continuous_features].std()
-    
     # Select input phenotypes and target
     input_phenotypes = phenotypes[phenotypes_to_include].values
     target_labels = phenotypes[target_phenotype].values      
